@@ -8,9 +8,8 @@ metadata:
     policy.open-cluster-management.io/categories: PR.DS DataSecurity
     policy.open-cluster-management.io/controls: PR.DS-2 Data-in-transit
 spec:
-  disabled: false
-  complianceType: musthave
   remediationAction: inform
+  disabled: false
   namespaces:
     exclude: ["kube-*"]
     include: ["default"]
