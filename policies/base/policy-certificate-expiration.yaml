@@ -24,6 +24,7 @@ spec:
               - kube-*
             include:
               - openshift-ingress
+              - openshift-config
           remediationAction: inform
           severity: low
 ---
