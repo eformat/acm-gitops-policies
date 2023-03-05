@@ -146,3 +146,13 @@ spec:
     apiVersion: cluster.open-cluster-management.io/v1beta1
     name: placement-all-openshift
     namespace: open-cluster-management-global-set
+---
+apiVersion: operator.open-cluster-management.io/v1
+kind: MultiClusterHub
+metadata:
+  name: multiclusterhub
+  namespace: open-cluster-management
+  annotations:
+    installer.open-cluster-management.io/mce-subscription-spec: '{"source": "redhat-operator-index"}'
+spec:
+  availabilityConfig: "Basic"
