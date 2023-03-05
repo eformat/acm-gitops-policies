@@ -1,0 +1,10 @@
+namespace: open-cluster-management-global-set
+
+bases:
+- ../../base
+
+resources:
+  - policy-config-gpu-iommu.yaml
+  - policy-config-nfd-operator-instance.yaml
+  - policy-config-nvidia-gpu-operator-clusterpolicy.yaml
+  - policyset-nvidia-gpu-policies.yaml
