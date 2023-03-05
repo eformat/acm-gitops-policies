@@ -1,5 +1,8 @@
 namespace: open-cluster-management-global-set
 
+bases:
+- advanced-cluster-management
+
 resources:
 - policy-config-chrony-masters.yaml
 - policy-config-cluster-proxy.yaml
