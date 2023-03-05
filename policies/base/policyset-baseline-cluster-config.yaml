@@ -9,6 +9,7 @@ spec:
     - add-timezone-brisbane-master
     - set-cluster-proxy
     - set-openshift-cluster-version
+    - policy-certificate-expiration
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
