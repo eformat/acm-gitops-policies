@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    rht-gitops.com/open-cluster-management-global-set: policies
+  name: nvidia-overlay-policies
+  namespace: open-cluster-management-global-set
+spec:
+  destination:
+    namespace: open-cluster-management-global-set
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: policies/overlays/nvidia-gpu
+    repoURL: https://github.com/eformat/acm-gitops-policies.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
