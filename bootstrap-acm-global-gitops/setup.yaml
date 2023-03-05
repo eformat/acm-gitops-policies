@@ -162,3 +162,18 @@ subjects:
 - kind: ServiceAccount
   name: global-policy-argocd-server
   namespace: open-cluster-management-global-set
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: appset-rolebinding-to-argocd-server
+  namespace: open-cluster-management-global-set
+subjects:
+- kind: ServiceAccount
+  name: global-policy-argocd-server
+  namespace: open-cluster-management-global-set
+roleRef:
+  kind: Role
+  name: permissions
+  namespace: open-cluster-management-global-set
+  apiGroup: rbac.authorization.k8s.io
