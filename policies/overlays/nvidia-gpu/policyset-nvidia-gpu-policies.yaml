@@ -15,7 +15,7 @@ metadata:
   name: binding-nvidia-gpu-config
 placementRef:
   apiGroup: apps.open-cluster-management.io
-  name: all-stores
+  name: all-clusters
   kind: PlacementRule
 subjects:
   - name: nvidia-gpu-config

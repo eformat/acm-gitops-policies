@@ -38,7 +38,7 @@ kind: PlacementBinding
 metadata:
   name: binding-configure-image-registry
 placementRef:
-  name: all-stores
+  name: all-clusters
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:

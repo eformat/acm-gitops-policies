@@ -1,0 +1,42 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-certificate-expiration
+  annotations:
+    policy.open-cluster-management.io/standards: NIST-CSF
+    policy.open-cluster-management.io/categories: PR.DS DataSecurity
+    policy.open-cluster-management.io/controls: PR.DS-2 Data-in-transit
+spec:
+  disabled: false
+  complianceType: musthave
+  remediationAction: inform
+  namespaces:
+    exclude: ["kube-*"]
+    include: ["default"]
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: CertificatePolicy # cert management expiration
+        metadata:
+          name: policy-certificate-expiration-minimum
+        spec:
+          namespaceSelector:
+            include: ["default"]
+            exclude: []
+          remediationAction: inform
+          severity: low
+          minimumDuration: 720h
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-nvidia-gpu-config
+placementRef:
+  apiGroup: apps.open-cluster-management.io
+  name: all-clusters
+  kind: PlacementRule
+subjects:
+  - name: baseline-cluster-config
+    apiGroup: policy.open-cluster-management.io
+    kind: PolicySet
