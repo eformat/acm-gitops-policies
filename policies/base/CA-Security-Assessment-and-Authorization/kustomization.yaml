@@ -1,0 +1,8 @@
+namespace: open-cluster-management-global-set
+
+resources:
+- policy-compliance-cis-remediation-masters.yaml
+- policy-compliance-cis-scan-common.yaml
+- policy-compliance-cis-scan-nodes.yaml
+- policy-compliance-cis-scan-platform.yaml
+- policy-security-stackrox-namespace.yaml

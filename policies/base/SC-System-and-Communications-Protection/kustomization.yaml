@@ -1,0 +1,5 @@
+namespace: open-cluster-management-global-set
+
+resources:
+- policy-certificate-expiration.yaml
+- policy-security-encrypt-etcd.yaml

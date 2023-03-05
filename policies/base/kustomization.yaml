@@ -2,22 +2,11 @@ namespace: open-cluster-management-global-set
 
 resources:
 - placement-all-clusters.yaml
-- policy-access-no-wildcard-roles.yaml
-- policy-access-remove-self-provisioner.yaml
-- policy-compliance-cis-remediation-masters.yaml
-- policy-compliance-cis-scan-common.yaml
-- policy-compliance-cis-scan-nodes.yaml
-- policy-compliance-cis-scan-platform.yaml
-- policy-config-chrony-masters.yaml
-- policy-config-cluster-proxy.yaml
-- policy-config-image-registry.yaml
-- policy-config-schedulable-masters.yaml
-- policy-config-set-cluster-version.yaml
-- policy-config-timezone-brisbane-masters.yaml
-- policy-integrity-allowed-registries.yaml
-- policy-security-encrypt-etcd.yaml
-- policy-security-stackrox-namespace.yaml
 - policyset-baseline-cluster-config.yaml
 - policyset-compliance-policies.yaml
 - policyset-security-policies.yaml
-- policy-certificate-expiration.yaml
+- AC-Access-Control/
+- CA-Security-Assessment-and-Authorization/
+- CM-Configuration-Management/
+- SC-System-and-Communications-Protection/
+- SI-System-and-Information-Integrity/

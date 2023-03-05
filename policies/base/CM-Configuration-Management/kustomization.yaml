@@ -1,0 +1,9 @@
+namespace: open-cluster-management-global-set
+
+resources:
+- policy-config-chrony-masters.yaml
+- policy-config-cluster-proxy.yaml
+- policy-config-image-registry.yaml
+- policy-config-schedulable-masters.yaml
+- policy-config-set-cluster-version.yaml
+- policy-config-timezone-brisbane-masters.yaml
