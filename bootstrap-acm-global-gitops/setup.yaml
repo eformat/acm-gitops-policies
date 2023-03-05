@@ -1,50 +1,4 @@
 ---
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: openshift-gitops-operator
-  namespace: openshift-operators
-spec:
-  channel: stable
-  name: openshift-gitops-operator
-  source: redhat-operators
-  sourceNamespace: openshift-marketplace
-  config:
-    env:
-    - name: DISABLE_DEFAULT_ARGOCD_INSTANCE
-      value: "true"
-    - name: ARGOCD_CLUSTER_CONFIG_NAMESPACES
-      value: fteam-ci-cd,openshift-gitops,open-cluster-management-global-set
----
-apiVersion: apps.open-cluster-management.io/v1beta1
-kind: GitOpsCluster
-metadata:
-  name: global-policy
-  namespace: open-cluster-management-global-set
-spec:
-  argoServer:
-    cluster: local-cluster
-    argoNamespace: open-cluster-management-global-set
-  placementRef:
-    kind: Placement
-    apiVersion: cluster.open-cluster-management.io/v1beta1
-    name: placement-all-openshift
-    namespace: open-cluster-management-global-set
----
-apiVersion: cluster.open-cluster-management.io/v1beta1
-kind: Placement
-metadata:
-  labels:
-    custom: gitops-operator-policy
-  name: placement-all-openshift
-  namespace: open-cluster-management-global-set
-spec:
-  predicates:
-  - requiredClusterSelector:
-      labelSelector:
-        matchExpressions:
-          - {key: useglobal, operator: In, values: ["true"]}
----
 apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
 metadata:
@@ -177,3 +131,18 @@ roleRef:
   name: permissions
   namespace: open-cluster-management-global-set
   apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps.open-cluster-management.io/v1beta1
+kind: GitOpsCluster
+metadata:
+  name: global-policy
+  namespace: open-cluster-management-global-set
+spec:
+  argoServer:
+    cluster: local-cluster
+    argoNamespace: open-cluster-management-global-set
+  placementRef:
+    kind: Placement
+    apiVersion: cluster.open-cluster-management.io/v1beta1
+    name: placement-all-openshift
+    namespace: open-cluster-management-global-set

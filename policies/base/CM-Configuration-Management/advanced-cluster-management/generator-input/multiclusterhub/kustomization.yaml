@@ -1,5 +1,2 @@
-bases:
-- ../base
-
 resources:
 - multiclusterhub.yaml
