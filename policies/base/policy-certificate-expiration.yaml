@@ -10,9 +10,6 @@ metadata:
 spec:
   remediationAction: inform
   disabled: false
-  namespaces:
-    exclude: ["kube-*"]
-    include: ["default"]
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
@@ -21,7 +18,8 @@ spec:
           name: policy-certificate-expiration-minimum
         spec:
           namespaceSelector:
-            include: ["default"]
+            include:
+              - openshift-ingress
             exclude: []
           remediationAction: inform
           severity: low
