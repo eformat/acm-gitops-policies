@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     policy.open-cluster-management.io/categories: SC System and Communications Protection
     policy.open-cluster-management.io/controls: SC-8 Transmission Confidentiality and Integrity
-    policy.open-cluster-management.io/standards: NIST 800-53
+    policy.open-cluster-management.io/standards: NIST SP 800-53
 spec:
   remediationAction: inform
   disabled: false
