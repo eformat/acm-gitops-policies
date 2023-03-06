@@ -14,7 +14,6 @@ Overlays and environment specific features are expected to be exposed as ArgoCD 
 
 Application  | Description                                                                                                                                                                                                            | Prerequisites
 ------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| -------------
-[ACM Hub AppSet](./applications/acmhub-appset.yaml) | Configures the MultiClusterHub. | ACM, ArgoCD
 [Nvidia App](./applications/nvidia-overlay-app.yaml) | Configures All Policies from nvidia overlay and cluster base. | ACM, ArgoCD
 [Team ArgoCD AppSet](./applications/nvidia-overlay-app.yaml) | Configures All Policies for Team ArgoCD deployments. | ACM, ArgoCD
 
