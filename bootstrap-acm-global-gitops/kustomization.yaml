@@ -1,4 +1,4 @@
 bases:
-- acm-operator
-- gitops-operator
+- ../components/operators/acm-operator
+- ../components/operators/gitops-operator
 
