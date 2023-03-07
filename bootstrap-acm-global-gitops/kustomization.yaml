@@ -1,4 +1,4 @@
 bases:
 - ../components/operators/acm-operator
 - ../components/operators/gitops-operator
-
+- ../components/operators/lvm-storage-operator
