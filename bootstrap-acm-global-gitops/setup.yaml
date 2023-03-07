@@ -153,6 +153,6 @@ metadata:
   name: multiclusterhub
   namespace: open-cluster-management
   annotations:
-    installer.open-cluster-management.io/mce-subscription-spec: '{"source": "redhat-operator-index"}'
+    installer.open-cluster-management.io/mce-subscription-spec: '{"source": "redhat-operators"}'
 spec:
   availabilityConfig: "Basic"

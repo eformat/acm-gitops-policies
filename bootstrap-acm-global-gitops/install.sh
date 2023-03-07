@@ -16,8 +16,8 @@ done
 # wait for operator to spin-up
 oc -n open-cluster-management wait pod -l name=multiclusterhub-operator --for=condition=Ready --timeout=180s
 if [ $? != 0 ]; then
-echo "🛑 timed out waiting for multiclusterhub operator pod, exiting 🛑";
-exit 1;
+  echo "🛑 timed out waiting for multiclusterhub operator pod, exiting 🛑";
+  exit 1;
 fi
 
 # configure
