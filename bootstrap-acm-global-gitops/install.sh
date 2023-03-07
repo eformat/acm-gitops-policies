@@ -13,6 +13,15 @@ while [ true ]; do
   sleep 5s;
 done
 
+# wait for project
+while [ true ]; do
+  oc get project open-cluster-management
+  if [ $? -eq 0 ]; 
+    then break; 
+  fi;
+  sleep 5s;
+done
+
 # wait for operator to spin-up
 oc -n open-cluster-management wait pod -l name=multiclusterhub-operator --for=condition=Ready --timeout=180s
 if [ $? != 0 ]; then
