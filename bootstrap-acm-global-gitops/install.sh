@@ -29,5 +29,12 @@ if [ $? != 0 ]; then
   exit 1;
 fi
 
+# wait for operator to spin-up
+oc -n openshift-storage wait pod -l app.kubernetes.io/name=lvms-operator --for=condition=Ready --timeout=180s
+if [ $? != 0 ]; then
+  echo "🛑 timed out waiting for lvms-operator operator pod, exiting 🛑";
+  exit 1;
+fi
+
 # configure
 oc apply -f setup.yaml
