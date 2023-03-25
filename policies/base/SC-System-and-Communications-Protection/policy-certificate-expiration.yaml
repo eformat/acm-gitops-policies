@@ -18,7 +18,7 @@ spec:
         metadata:
           name: policy-certificate-expiration-minimum
         spec:
-          minimumDuration: 600h
+          minimumDuration: 200h
           namespaceSelector:
             exclude:
               - kube-*
