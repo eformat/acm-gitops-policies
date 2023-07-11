@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    rht-gitops.com/open-cluster-management-global-set: policies
+  name: base-policies
+  namespace: open-cluster-management-global-set
+spec:
+  destination:
+    namespace: open-cluster-management-global-set
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: policies/base
+    repoURL: https://github.com/eformat/acm-gitops-policies.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
