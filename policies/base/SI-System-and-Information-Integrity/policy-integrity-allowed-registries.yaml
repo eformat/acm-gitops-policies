@@ -8,7 +8,7 @@ metadata:
     policy.open-cluster-management.io/controls: SI-4 Information System Monitoring, Rolling Restart - All  # None, Control, Compute, All
 spec:
   remediationAction: inform
-  disabled: true
+  disabled: false
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
