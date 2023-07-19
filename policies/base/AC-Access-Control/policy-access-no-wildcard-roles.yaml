@@ -10,7 +10,7 @@ metadata:
     requires-rolling-restart: none # Use all, master, worker or none
 spec:
   remediationAction: enforce
-  disabled: true
+  disabled: false
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
