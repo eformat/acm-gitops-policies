@@ -13,6 +13,7 @@ spec:
     - cis-scan-platform
     - allowed-registries
     - encrypt-etcd
+    - policy-install-kyverno
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
