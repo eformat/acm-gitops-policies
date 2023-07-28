@@ -7,3 +7,4 @@ resources:
 - policy-config-schedulable-masters.yaml
 - policy-config-set-cluster-version.yaml
 - policy-config-timezone-brisbane-masters.yaml
+- policy-install-kyverno.yaml
