@@ -38,11 +38,11 @@ spec:
                       - project.openshift.io/v1/Project
                       - Namespace
                 validate:
-                  message: "Deleting {{request.oldObject.kind}}/{{request.oldObject.metadata.name}} is not allowed"
+                  message: "Deleting {{ `{{request.oldObject.kind}}/{{request.oldObject.metadata.name}}` }} is not allowed"
                   deny:
                     conditions:
                       any:
-                      - key: "{{request.operation}}"
+                      - key: "{{ `{{request.operation}}` }}"
                         operator: AnyIn
                         value:
                         - DELETE
