@@ -35,20 +35,18 @@ spec:
                   any:
                   - resources:
                       kinds:
+                      - project.openshift.io/v1/Project
                       - Namespace
-                      - Project
-                exclude:
-                  any:
-                  - clusterRoles:
-                    - cluster-admin
                 validate:
-                  message: "Deleting {{request.oldObject.kind}}/{{request.oldObject.metadata.name}} is not allowed for non cluster-admin."
+                  message: "Deleting {{request.oldObject.kind}}/{{request.oldObject.metadata.name}} is not allowed"
                   deny:
                     conditions:
                       any:
                       - key: "{{request.operation}}"
-                        operator: Equals
-                        value: DELETE
+                        operator: AnyIn
+                        value:
+                        - DELETE
+                        - UPDATE
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
