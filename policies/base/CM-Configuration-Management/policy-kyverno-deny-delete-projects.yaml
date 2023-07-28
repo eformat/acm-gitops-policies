@@ -1,0 +1,76 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-kyverno-deny-delete-projects
+  annotations:
+    policy.open-cluster-management.io/standards: NIST SP 800-53
+    policy.open-cluster-management.io/categories: CM Configuration Management
+    policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: deny-delete-projects
+      spec:
+        remediationAction: inform
+        severity: low
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: kyverno.io/v1
+            kind: ClusterPolicy
+            metadata:
+              name: deny-project-deletes
+            spec:
+              validationFailureAction: Enforce
+              background: false
+              rules:
+              - name: block-namespace-deletes
+                match:
+                  any:
+                  - resources:
+                      kinds:
+                      - Namespace
+                      - Project
+                exclude:
+                  any:
+                  - clusterRoles:
+                    - cluster-admin
+                validate:
+                  message: "Deleting {{request.oldObject.kind}}/{{request.oldObject.metadata.name}} is not allowed for non cluster-admin."
+                  deny:
+                    conditions:
+                      any:
+                      - key: "{{request.operation}}"
+                        operator: Equals
+                        value: DELETE
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-deny-delete-projects
+placementRef:
+  name: placement-policy-deny-delete-projects
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: policy-kyverno-deny-delete-projects
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-deny-delete-projects
+spec:
+  clusterConditions:
+    - status: "True"
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: kyverno-deny-delete-projects, operator: In, values: ["true"]}
