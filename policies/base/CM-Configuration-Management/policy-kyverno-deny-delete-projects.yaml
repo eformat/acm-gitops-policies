@@ -2,7 +2,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-kyverno-deny-delete-projects
+  name: policy-deny-delete-projects
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CM Configuration Management
@@ -57,7 +57,7 @@ placementRef:
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: policy-kyverno-deny-delete-projects
+  - name: policy-deny-delete-projects
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
