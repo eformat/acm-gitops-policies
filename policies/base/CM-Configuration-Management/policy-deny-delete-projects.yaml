@@ -46,7 +46,6 @@ spec:
                         operator: AnyIn
                         value:
                         - DELETE
-                        - UPDATE
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
