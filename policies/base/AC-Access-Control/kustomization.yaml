@@ -3,3 +3,4 @@ namespace: open-cluster-management-global-set
 resources:
 - policy-access-no-wildcard-roles.yaml
 - policy-access-remove-self-provisioner.yaml
+- policy-deny-delete-projects.yaml
